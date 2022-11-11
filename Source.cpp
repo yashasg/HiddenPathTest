@@ -1,7 +1,6 @@
 //INCLUDES
 #include<cstdint>
 #include<iostream>
-#include<queue>
 #include<unordered_map>
 #include <fstream>
 #include<string>
@@ -83,32 +82,16 @@ void AddRectToGrid(const SRect Rect, std::unordered_map<int32_t, SRect>& GridRec
 		SRect& Current = KVP.second;
 		if (Intersects(Current, Rect))
 		{
-			//check for row rectangle
-			if (Current.Top == Rect.Top)
-			{
-				Current.Width = Rect.Left - Current.Left;
-			}
-			//check for column rectangle0
-			if (Current.Left == Rect.Left)
-			{
-				Current.Height = Rect.Top - Current.Top;
-			}
+			//RowRect
+			SRect RowRect{ Current };
+			RowRect.Width = Rect.Left - Current.Left;
 
-			//check for dual rectangle
-			else
-			{
-				//RowRect
-				SRect RowRect{ Current };
-				RowRect.Width = Rect.Left - Current.Left;
+			//ColRect
+			SRect ColRect{ Current };
+			ColRect.Height = Rect.Top - Current.Top;
 
-				//ColRect
-				SRect ColRect{ Current };
-				ColRect.Height = Rect.Top - Current.Top;
-
-				//pick the rect with the highest area
-				Current = GetArea(RowRect) > GetArea(ColRect) ? RowRect : ColRect;
-
-			}
+			//pick the rect with the highest area
+			Current = GetArea(RowRect) > GetArea(ColRect) ? RowRect : ColRect;
 		}
 
 
