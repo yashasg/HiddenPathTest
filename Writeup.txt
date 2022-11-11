@@ -1,0 +1,22 @@
+
+Algorithm Description:
+
+I maintain an unordered_map where each cell in the grid holds info on the largest rectangle it can hold.
+As I traverse through the input file, Firstly I remove any cells from the map that are a part of the input file rectangle.
+Then, I update the remaining cells in the grid to accomodate the new input rectangle.
+After traversing the input file, I have a map of all empty cells in the grid and the largest rectangle that they can hold.
+I traverse through the map to find the rectangle with the largest area and add it to the grid, exactly like the input file rectangles
+I keep doing this until the map is empty, i.e all the rectangles in the grid have been filled.
+
+Resources Used:
+https://cplusplus.com/reference/string/string/find/
+https://tutorialedge.net/gamedev/aabb-collision-detection-tutorial/
+https://stackoverflow.com/questions/83439/remove-spaces-from-stdstring-in-c
+https://cplusplus.com/doc/tutorial/files/
+
+Future Plans:
+1) Write more test cases, to make sure the logic is correct.
+2) Break the code down to multiple files(.h,.cpp)
+3) Scale the grid and look for performance bottlenecks.
+4) Build a GUI to visualize the algorithm.
+5) Add a help command line arg to show usage.
